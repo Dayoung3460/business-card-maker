@@ -1,8 +1,7 @@
 # Business Card Maker
 
 ✔ Firebase Auth Login: Google / Github
-
-
+<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
