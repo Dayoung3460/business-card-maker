@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Business Card Maker
+
+✔ Firebase Auth Login: Google / Github
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
