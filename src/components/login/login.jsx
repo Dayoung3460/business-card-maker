@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Footer from "../footer/footer"
 import Header from "../header/header"
 import styles from './login.module.css'
@@ -15,9 +15,17 @@ const Login = ({authService}) => {
             .then(console.log)
     }
 
+    // 컴포넌트가 마운트나 업데이트가 됐을 때 vue의 라이프사이클 mounted랑 비슷..?
+    useEffect(() => {
+        authService
+            .onAuthChange(user => {
+                user && goToMaker(user.uid)
+            })
+    })
+
     return (
         <section className={styles.login}>
-            <Header></Header>
+            <Header/>
             <section>
                 <h1>Login</h1>
                     <ul className={styles.list}>
@@ -25,7 +33,7 @@ const Login = ({authService}) => {
                         <li className={styles.item}><button className={styles.button} onClick={onLogin}>Github</button></li>
                     </ul>
             </section>
-            <Footer></Footer>
+            <Footer/>
         </section>
     )
 }
