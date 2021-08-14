@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from 'react'
 import styles from './maker.module.css'
-import Header from "../header/header";
-import Footer from "../footer/footer";
-import {useHistory} from "react-router-dom";
+import Header from "../header/header"
+import Footer from "../footer/footer"
+import {useHistory} from "react-router-dom"
 
 const Maker = ({ authService }) => {
     const history = useHistory()
@@ -15,7 +15,6 @@ const Maker = ({ authService }) => {
             if(!user) {
                 history.push('/')
             }
-
         })
     })
 
@@ -23,9 +22,8 @@ const Maker = ({ authService }) => {
         <section className={styles.maker}>
             <Header onLogout={onLogout}/>
             <Footer/>
-
         </section>
     )
 }
 
-export default Maker;
+export default Maker
