@@ -1,0 +1,61 @@
+@value makerShadow from '../../common/color.css';
+@value makerBlack from '../../common/color.css';
+@value makerWhite from '../../common/color.css';
+@value makerColorful from '../../common/color.css';
+@value makerWheat from '../../common/color.css';
+
+.card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+    padding: 0.2em 0;
+    box-shadow: 6px 6px 8px 0px makerShadow;
+    max-width: 30rem;
+    width: 100%;
+}
+
+.card.dark {
+    background-color: makerBlack;
+    color: makerWhite;
+}
+
+.card.light {
+    background-color: makerWhite;
+    color: makerBlack;
+}
+
+.card.colorful {
+    background: makerColorful;
+}
+
+.avatar {
+    width: 10em;
+    height: 10em;
+    padding: 1em;
+    margin-left: 0.5em;
+    margin-right: 1em;
+    border-radius: 50%;
+}
+
+.info {
+    width: 100%;
+}
+.name, .company, .title, .email, .message {
+    margin: 0 0 0.2em 0;
+    font-size: 0.8rem;
+}
+
+.name {
+    font-size: 1.2em;
+}
+
+.company::after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 2px;
+    background-color: makerWheat;
+    margin: 0.3em 0;
+}
+
