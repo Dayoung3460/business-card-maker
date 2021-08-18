@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './card.module.css'
 
 const DEFAULT_IMG = '/images/default_logo.png'
-const Card = ({ card }) => {
+
+// memo: 메모로 감싸면, 리턴값을 memory 기억해놓고 다음에 이 함수가 또 실행됐을 때 이전 리턴 값과 값이 같으면 또 랜더링 안함.
+// 즉 props가 변하지 않으면(리턴값도 변할리가 없지) 랜더링 안됨.
+const Card = memo(({ card }) => {
     const {name, company, title, email, message, theme, fileURL} = card
     const url = fileURL || DEFAULT_IMG
 
@@ -18,7 +21,7 @@ const Card = ({ card }) => {
             </div>
         </li>
     )
-}
+})
 
 function getStyles(theme) {
     switch(theme) {
