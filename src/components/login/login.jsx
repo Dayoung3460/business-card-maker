@@ -15,7 +15,7 @@ const Login = ({authService}) => {
     const onLogin = (event) => {
         authService //
             .login(event.currentTarget.textContent)
-            .then(console.log)
+            .then()
     }
 
     // 컴포넌트가 마운트나 업데이트가 됐을 때 vue의 라이프사이클 mounted랑 비슷..?

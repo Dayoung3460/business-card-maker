@@ -27,7 +27,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         // 컴포넌트가 unmount 되었을 때 (컴포넌트가 더이상 안보일 때) 리턴함수 실행
         // 메모리 정리 시 사용
         return () => stopSync()
-    }, [userId])
+    }, [userId, cardRepository])
 
     useEffect(() => {
         authService.onAuthChange(user => {
@@ -37,7 +37,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
                 history.push('/')
             }
         })
-    })
+    }, [userId, history, authService])
 
     const deleteCard = (card) => {
         setCards(cards => {
