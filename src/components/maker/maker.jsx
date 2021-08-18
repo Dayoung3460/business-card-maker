@@ -6,43 +6,11 @@ import {useHistory} from "react-router-dom"
 import Editor from "../editor/editor"
 import Preview from "../preview/preview"
 
-const Maker = ({ FileInput, authService }) => {
-    const [cards, setCards] = useState({
-        1: {
-            id: '1',
-            name: 'Ellie',
-            company: 'Samsung',
-            theme: 'light',
-            title: 'Software Engineer',
-            email: 'ellie@gmail.com',
-            message: 'go for it',
-            fileName: 'ellie',
-            fileURL: 'ellie.png'
-            },
-        2: {
-            id: '2',
-            name: 'Dayoung',
-            company: 'Coinvest',
-            theme: 'dark',
-            title: 'Front-end Web Developer',
-            email: 'dayoung@gmail.com',
-            message: 'I need coffee',
-            fileName: 'dayoung',
-            fileURL: null
-            },
-        3: {
-            id: '3',
-            name: 'Clara',
-            company: 'LN',
-            theme: 'colorful',
-            title: 'Junior Developer',
-            email: 'clara@gmail.com',
-            message: 'I am off',
-            fileName: 'clara',
-            fileURL: null
-            }
-
-    })
+const Maker = ({ FileInput, authService, cardRepository }) => {
+    const historyState = useHistory().state
+    const [cards, setCards] = useState({})
+    const [userId, setUserId]
+        = useState(historyState && historyState.id)
 
     const history = useHistory()
     const onLogout = () => {
@@ -51,7 +19,9 @@ const Maker = ({ FileInput, authService }) => {
 
     useEffect(() => {
         authService.onAuthChange(user => {
-            if(!user) {
+            if(user) {
+                setUserId(user.uid)
+            } else {
                 history.push('/')
             }
         })
@@ -63,6 +33,7 @@ const Maker = ({ FileInput, authService }) => {
             delete updated[card.id]
             return updated
         })
+        cardRepository.removeCard(userId, card)
     }
 
     const createOrUpdateCard = (card) => {
@@ -71,6 +42,7 @@ const Maker = ({ FileInput, authService }) => {
             updated[card.id] = card
             return updated
         })
+        cardRepository.saveCard(userId, card)
     }
 
     return (
