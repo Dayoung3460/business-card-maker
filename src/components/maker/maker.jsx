@@ -18,6 +18,18 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
     }
 
     useEffect(() => {
+        if(!userId) {
+            return
+        }
+        const stopSync = cardRepository.syncCards(userId, cards => {
+            setCards(cards)
+        })
+        // 컴포넌트가 unmount 되었을 때 (컴포넌트가 더이상 안보일 때) 리턴함수 실행
+        // 메모리 정리 시 사용
+        return () => stopSync()
+    }, [userId])
+
+    useEffect(() => {
         authService.onAuthChange(user => {
             if(user) {
                 setUserId(user.uid)
