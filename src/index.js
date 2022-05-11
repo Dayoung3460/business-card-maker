@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import ReactDOM from 'react-dom';
+import '@fortawesome/fontawesome-free/js/all.js';
 import './index.module.css';
 import App from './App';
 import AuthService from "./service/auth_service";
